@@ -7,6 +7,17 @@ import os
 env.user = 'ubuntu'
 env.hosts = ['54.146.94.206', '100.25.202.71']
 
+def do_pack():
+    """ generate archive and store it in versions dir """
+    now = datetime.now()
+    filename = now.strftime("versions/web_static_%Y%m%d%H%M%S.tgz")
+    command = f"tar -czvf {filename} web_static"
+    local("mkdir -p versions")
+    try:
+        local(command)
+        return filename
+    except Exception as e:
+        return None
 
 def do_deploy(archive_path):
     """ deploy archive """
