@@ -7,6 +7,7 @@ import os
 env.user = 'ubuntu'
 env.hosts = ['54.146.94.206', '100.25.202.71']
 
+
 def do_pack():
     """ generate archive and store it in versions dir """
     now = datetime.now()
