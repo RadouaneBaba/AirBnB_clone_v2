@@ -3,6 +3,7 @@
 from fabric.api import local
 from datetime import datetime
 
+
 def do_pack():
     """ generate archive and store it in versions dir """
     now = datetime.now()
