@@ -16,12 +16,13 @@ def do_pack():
     try:
         local(command)
         return filename
-    except Exception as e:
+    except Exception:
         return None
+
 
 def do_deploy(archive_path):
     """ deploy archive """
-    if not os.path.isfile(archive_path):
+    if not os.path.exists(archive_path):
         return False
 
     name = archive_path.split('/')[1]
@@ -39,6 +40,7 @@ def do_deploy(archive_path):
         run(f"rm -rf {path_2}/web_static")
         run("rm -rf /data/web_static/current")
         run(f"ln -s {path_2} /data/web_static/current")
+        print("New version deployed!")
         return True
-    except Exception as e:
+    except Exception:
         return False
