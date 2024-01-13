@@ -23,7 +23,7 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """ deploy archive """
+    """ deploy archive to webservers """
     if not os.path.exists(archive_path):
         return False
 
@@ -35,13 +35,13 @@ def do_deploy(archive_path):
         path_1 = f"/tmp/{name}.tgz"
         path_2 = f"/data/web_static/releases/{name}"
 
-        run(f"mkdir -p {path_2}")
-        run(f"tar -xzf {path_1} -C {path_2}")
-        run(f"rm {path_1}")
-        run(f"mv {path_2}/web_static/* {path_2}")
-        run(f"rm -rf {path_2}/web_static")
+        run("mkdir -p {}".format(path_2))
+        run("tar -xzf {} -C {}".format(path_1, path_2))
+        run("rm {}".format(path_1))
+        run("mv {}/web_static/* {}".format(path_2, path_2))
+        run("rm -rf {}/web_static".format(path_2))
         run("rm -rf /data/web_static/current")
-        run(f"ln -s {path_2} /data/web_static/current")
+        run("ln -s {} /data/web_static/current".format(path_2))
         print("New version deployed!")
         return True
     except Exception:
