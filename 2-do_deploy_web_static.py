@@ -6,14 +6,13 @@ import os
 
 env.user = 'ubuntu'
 env.hosts = ['54.146.94.206', '100.26.168.218']
-env.key_filename = "~/.ssh/id_rsa"
 
 
 def do_pack():
     """ generate archive and store it in versions dir """
     now = datetime.now()
     filename = now.strftime("versions/web_static_%Y%m%d%H%M%S.tgz")
-    command = f"tar -czvf {filename} web_static"
+    command = "tar -czvf {} web_static".format(filename)
     local("mkdir -p versions")
     try:
         local(command)
@@ -32,8 +31,8 @@ def do_deploy(archive_path):
     try:
         put(archive_path, "/tmp/")
 
-        path_1 = f"/tmp/{name}.tgz"
-        path_2 = f"/data/web_static/releases/{name}"
+        path_1 = "/tmp/{}.tgz".format(name)
+        path_2 = "/data/web_static/releases/{}".format(name)
 
         run("mkdir -p {}".format(path_2))
         run("tar -xzf {} -C {}".format(path_1, path_2))
