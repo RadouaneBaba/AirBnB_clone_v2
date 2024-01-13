@@ -5,7 +5,6 @@ import os
 from datetime import datetime
 
 
-env.user = 'ubuntu'
 env.hosts = ['54.146.94.206', '100.26.168.218']
 
 
