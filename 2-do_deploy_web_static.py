@@ -2,6 +2,7 @@
 """ distribute archive on webservers """
 from fabric.api import *
 import os
+from datetime import datetime
 
 
 env.user = 'ubuntu'
