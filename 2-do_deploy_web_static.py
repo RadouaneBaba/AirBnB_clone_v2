@@ -27,9 +27,9 @@ def do_deploy(archive_path):
     if not os.path.exists(archive_path):
         return False
 
-    name = archive_path.split('/')[1]
-    name = name.split('.')[0]
     try:
+        name = archive_path.split('/')[1]
+        name = name.split('.')[0]
         put(archive_path, "/tmp/")
 
         path_1 = "/tmp/{}.tgz".format(name)
