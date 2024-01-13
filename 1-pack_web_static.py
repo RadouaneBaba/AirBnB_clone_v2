@@ -8,10 +8,10 @@ def do_pack():
     """ generate archive and store it in versions dir """
     now = datetime.now()
     filename = now.strftime("versions/web_static_%Y%m%d%H%M%S.tgz")
-    command = f"tar -czvf {filename} web_static"
+    command = "tar -czvf {} web_static".format(filename)
     local("mkdir -p versions")
     try:
         local(command)
         return filename
-    except Exception as e:
+    except Exception:
         return None
