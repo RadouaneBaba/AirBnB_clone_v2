@@ -10,7 +10,9 @@ from models.base_model import Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
+
 class DBStorage:
+    """ db storage """
     __engine = None
     __session = None
 
@@ -65,8 +67,8 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
 
         # Creating a thread safe session
-        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(session_factory)
+        sess_f = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(sess_f)
 
         self.__session = Session()
 
