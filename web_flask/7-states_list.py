@@ -5,13 +5,13 @@ from flask import render_template
 from models import storage
 from models.state import State
 
-states = storage.all(State)
 app = Flask(__name__)
 
 
 @app.route("/states_list", strict_slashes=False)
 def states_list():
     """ list states """
+    states = storage.all(State)
     state_list = []
     for state in states.values():
         state_list.append(state)
