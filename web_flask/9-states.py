@@ -15,7 +15,9 @@ def states_list():
     state_list = []
     for state in states.values():
         state_list.append(state)
-    return render_template("9-states.html", states=state_list, state_search=False)
+    return render_template("9-states.html",
+                           states=state_list,
+                           state_search=False)
 
 
 @app.route("/states/<state_id>", strict_slashes=False)
@@ -26,7 +28,9 @@ def state_id(state_id):
     for state in states.values():
         if state.id == state_id:
             state_dict = state
-    return render_template("9-states.html", state=state_dict, state_search=True)
+    return render_template("9-states.html",
+                           state=state_dict,
+                           state_search=True)
 
 
 @app.teardown_appcontext
