@@ -23,7 +23,7 @@ class State(BaseModel, Base):
         dictionary = models.storage.all()
         _list = []
         for key in dictionary:
-            key = shlex.split(key.replace('.', ' '))
-            if key[0] == 'City':
+            m_key = shlex.split(key.replace('.', ' '))
+            if m_key[0] == 'City':
                 _list.append(dictionary[key])
         return [item for item in _list if item.state_id == self.id]
